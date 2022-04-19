@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
         Music music = new Music();
-    music.playBackground();
+    music.pizzatime();
     Thread.sleep(40000);
     }
 }

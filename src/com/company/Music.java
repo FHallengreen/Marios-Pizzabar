@@ -6,7 +6,7 @@ import javax.sound.sampled.Clip;
 import java.io.File;
 
 public class Music {
-    void playBackground() {
+    void pizzatime() {
         try {
             String musicLocation = "pizzatime.wav";
             File musicPath = new File(musicLocation);
