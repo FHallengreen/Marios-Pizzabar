@@ -1,8 +1,7 @@
 package com.company;
 
-import java.util.ArrayList;
-
 public class Ui {
+  Menu menu = new Menu();
 
 
 }

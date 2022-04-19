@@ -23,6 +23,12 @@ public class Menu {
 
   }
 
+  @Override
+  public String toString() {
+    return "Menu:" +
+        pizzamenu;
+  }
+
   public void addPizza(Pizza pizza) {
     this.pizzamenu.add(pizza);
   }
