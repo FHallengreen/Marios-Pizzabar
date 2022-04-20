@@ -57,8 +57,11 @@ public class Engine {
   }
 
   private void payment() {
-    System.out.println(cO.getCurrentOrders());
-  }
+        System.out.println("Which order would you like to archive/cancel?");
+
+      }
+
+
 
   public void execute() throws InterruptedException {
 
