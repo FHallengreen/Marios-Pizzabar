@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-04-20T08:13:01.331Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36" etag="ragyEpJ0Ly9Ih79ijR0s" version="17.3.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-04-20T08:39:14.504Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36" etag="PdRZ1O_CZqwsOKBQcpr4" version="17.3.0" type="github">
   <diagram id="iHepzOdavw2f6F8-zI7-" name="Page-1">
     <mxGraphModel dx="788" dy="491" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -15,7 +15,7 @@
             <mxPoint x="585" y="180" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ZvsNP6Vq893Cl9qk19gS-4" value="Kunde ringer" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=none;strokeColor=#000000;" vertex="1" parent="1">
+        <mxCell id="ZvsNP6Vq893Cl9qk19gS-4" value="Kunde bestiller" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=none;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="525" y="100" width="120" height="40" as="geometry" />
         </mxCell>
         <mxCell id="ZvsNP6Vq893Cl9qk19gS-11" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;rounded=0;" vertex="1" parent="1">
