@@ -12,7 +12,9 @@ public class Order {
   }
 
   public void addPizzaToOrder(Pizza pizza){
-    order.add(pizza);
+    if(pizza != null){
+      order.add(pizza);
+    }else System.out.println("No pizza to be found under that Number!");
   }
 
   public void removePizzaFromOrder(Pizza pizza){
@@ -28,7 +30,7 @@ public class Order {
   }
 
   public String toString(){
-    for(int x = 0; x<order.size();x++){
+    for(int x = 0; x < order.size()+1;x++){
       return order.get(x).getNumber() + ":" + order.get(x).getName();
     }
     return "*";

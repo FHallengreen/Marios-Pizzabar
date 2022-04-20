@@ -18,20 +18,19 @@ public class Engine {
     boolean runOrder = true;
     Order order = new Order(orderNumber);
     while (runOrder){
-      System.out.println(order);
-      System.out.println("Type 1. 2. 3. or 9.");
+      System.out.println("\n\n" + order.getOrder());
+      System.out.println("\nType 1. 2. 3. or 9.");
       String choice = sc.nextLine();
       switch(choice) {
         case "1" -> {
-          System.out.println("Enter Pizza number:");
+          System.out.println("\n\nEnter Pizza number:");
           String number = sc.nextLine();
           order.addPizzaToOrder(menu.getPizza(number));
-          System.out.println("Add Pizza to Order");
         }
         case "2" -> {
+          System.out.println("Enter Pizza number you wish to delete:");
           String number = sc.nextLine();
           order.removePizzaFromOrder(menu.getPizza(number));
-          System.out.println("Delete Pizza from Order");
         }
         case "3" -> {
           System.out.println("Cancel order");
@@ -72,7 +71,7 @@ public class Engine {
           System.out.println("Creating new order");
           createOrder();
           }
-        case "3" -> System.out.println(cO.getCurrentOrders());
+        case "3" -> cO.showCurrentOrders();
         case "4" -> {
           System.out.println("Archive menu");
           archiveMenu();

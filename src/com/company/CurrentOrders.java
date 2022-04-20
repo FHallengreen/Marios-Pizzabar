@@ -17,14 +17,9 @@ public class CurrentOrders {
     return currentOrders;
   }
 
-  public void removeOrder(){
-    currentOrders.remove(currentOrders.size()-1);
-  }
-
-  public String toString(){
+  public void showCurrentOrders(){
     for(int x = 0; x<currentOrders.size();x++) {
-      return currentOrders.get(x).getOrderNumber() + ":" + currentOrders.get(x).getOrder().toString();
+      System.out.println(currentOrders.get(x).getOrderNumber() + " " + currentOrders.get(x).getOrder() + "");
       }
-    return "";
   }
 }
