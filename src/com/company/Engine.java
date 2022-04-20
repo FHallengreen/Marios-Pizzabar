@@ -1,7 +1,5 @@
 package com.company;
 
-import java.sql.SQLOutput;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -11,10 +9,10 @@ public class Engine {
   Ui ui = new Ui();
   Menu menu = new Menu();
   CurrentOrders cO = new CurrentOrders();
+  int orderNumber = 1;
 
   public void createOrder(){
     boolean runOrder = true;
-    int orderNumber = 1;
     Order order = new Order(orderNumber);
     while (runOrder){
       System.out.println(order);
@@ -23,12 +21,19 @@ public class Engine {
       switch(choice) {
         case "1" -> {
           System.out.println("Enter Pizza number:");
-          int number = sc.nextInt();
+          String number = sc.nextLine();
           order.addPizzaToOrder(menu.getPizza(number));
           System.out.println("Add Pizza to Order");
         }
-        case "2" -> System.out.println("Delete Pizza from Order");
-        case "3" -> System.out.println("Cancel order");
+        case "2" -> {
+          String number = sc.nextLine();
+          order.removePizzaFromOrder(menu.getPizza(number));
+          System.out.println("Delete Pizza from Order");
+        }
+        case "3" -> {
+          System.out.println("Cancel order");
+          runOrder = false;
+        }
         case "9" -> {
           orderNumber++;
           runOrder = false;
@@ -46,7 +51,7 @@ public class Engine {
     boolean run = true;
     while (run) {
       switch (sc.nextLine()) {
-        case "1" -> System.out.println(menu.pizzaMenu);
+        case "1" -> System.out.println(menu.toString());
         case "2" -> {
           System.out.println("Creating new order");
           createOrder();
