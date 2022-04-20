@@ -1,5 +1,7 @@
 package com.company;
 
+import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -10,6 +12,7 @@ public class Engine {
   Menu menu = new Menu();
   CurrentOrders cO = new CurrentOrders();
   int orderNumber = 1;
+  Archive archive = new Archive();
 
   public void createOrder(){
     boolean runOrder = true;
@@ -44,6 +47,19 @@ public class Engine {
     }
   }
 
+  private void lostRevenue() {
+    int lostRevenue = 0;
+//    lostRevenue -= input.getPrice();
+  }
+
+  private void archiveMenu() {
+
+  }
+
+  private void payment() {
+    System.out.println(cO.getCurrentOrders());
+  }
+
   public void execute() throws InterruptedException {
 
     System.out.println((Arrays.toString(menu.pizzaMenu.toArray()).replace(" , ","").replace("]","")));
@@ -51,14 +67,24 @@ public class Engine {
     boolean run = true;
     while (run) {
       switch (sc.nextLine()) {
-        case "1" -> System.out.println(menu.toString());
+        case "1" -> System.out.println(menu.pizzaMenu);
         case "2" -> {
           System.out.println("Creating new order");
           createOrder();
           }
         case "3" -> System.out.println(cO.getCurrentOrders());
-        case "4" -> System.out.println("Archive menu");
-        case "5" -> System.out.println("Check history");
+        case "4" -> {
+          System.out.println("Archive menu");
+          archiveMenu();
+        }
+        case "5" -> {
+          System.out.println("Check lost revenue");
+          lostRevenue();
+        }
+        case "6" -> {
+          System.out.println("Payment / Close Order");
+          payment();
+        }
         case "9" -> {
           System.out.println("Shutting down!");
           Thread.sleep(5000);
