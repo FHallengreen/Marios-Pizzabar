@@ -17,9 +17,10 @@ public class CurrentOrders {
     return currentOrders;
   }
 
-  public void showCurrentOrders(){
+  public String showCurrentOrders(){
+    String orders = "";
     for(int x = 0; x<currentOrders.size();x++) {
-      System.out.println(currentOrders.get(x).getOrderNumber() + " " + currentOrders.get(x).getOrder() + "");
-      }
+      orders += currentOrders.get(x).getOrderNumber() + "" + currentOrders.get(x).getFullOrder() + "\n";
+    }return orders;
   }
 }

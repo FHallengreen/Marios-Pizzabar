@@ -25,8 +25,22 @@ public class Order {
     return order;
   }
 
+  public String getFullOrder(){
+    String fullorder = "[";
+    for(int i = 0;i<order.size();i++){
+      fullorder += order.get(i).getNumber() + "." + order.get(i).getName() + " ";
+    }return fullorder + "] " + getOrderPrice() + "DKK";
+  }
+
   public int getOrderNumber(){
     return orderNumber;
+  }
+
+  public int getOrderPrice(){
+    int totalPrice = 0;
+    for(int i = 0; i<order.size();i++){
+      totalPrice += order.get(i).getPrice();
+    }return totalPrice;
   }
 
   public String toString(){
