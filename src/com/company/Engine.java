@@ -11,29 +11,14 @@ public class Engine {
   int orderNumber = 1;
   Archive archive = new Archive();
 
-  public void newPage(){
-    System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-  }
-
-  public void mainMenu(){
-    System.out.println("╔═══════════════════════════╗");
-    System.out.println("║ 1. Menu                   ║");
-    System.out.println("║ 2. Create new order       ║");
-    System.out.println("║ 3. Show current orders    ║");
-    System.out.println("║ 4. Archive order          ║");
-    System.out.println("║ 5. Check lost revenue     ║");
-    System.out.println("║ 6. Payment / Close order  ║");
-    System.out.println("║ 0. Shutdown               ║");
-    System.out.println("╚═══════════════════════════╝");
-  }
 
   public void createOrder(){
     boolean runOrder = true;
     Order order = new Order(orderNumber);
     while (runOrder){
-      newPage();
+      System.out.println(ui.newPage());
       System.out.println("\n\n" + order.getFullOrder());
-      System.out.println("\nType 1. 2. 3. or 0.");
+      System.out.println(ui.orderMenu());
       String choice = sc.nextLine();
       switch(choice) {
         case "1" -> {
@@ -78,16 +63,14 @@ public class Engine {
 
   public void execute() throws InterruptedException {
 
-    //System.out.println((Arrays.toString(menu.pizzaMenu.toArray()).replace(" , ","").replace("]","")));
     //music.pizzatime(); //TODO Play dat funky music!!
     boolean run = true;
     while (run) {
-      newPage();
-      mainMenu();
+      System.out.println(ui.newPage());
+      System.out.println(ui.mainMenu());
       switch (sc.nextLine()) {
         case "1" -> {
-          newPage();
-          System.out.println(menu.pizzaMenu);
+          System.out.println(menu.getPizzamenu());
           System.out.println("\n\nPress ENTER to go back");
           sc.nextLine();
         }

@@ -28,7 +28,6 @@ public class Pizza {
   @Override
   public String toString() {
     String text = "\u001B[1m" + String.format("%2s.%-20s", number, name) + "\033[0m" + ingredients + "\t-\t" + price + "DKK\n";
-    //String text = "\u001B[1m " + number  + ".\t\t " +  name + "\t\t \033[0m" + ingredients + "\t\t\t\t" + price + ",-" + "\n ";
   return text;
   }
 
