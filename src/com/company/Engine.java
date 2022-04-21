@@ -1,8 +1,5 @@
 package com.company;
 
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Engine {
@@ -19,15 +16,15 @@ public class Engine {
   }
 
   public void mainMenu(){
-    System.out.println("-----------------------------");
-    System.out.println("| 1. Menu                   |");
-    System.out.println("| 2. Create new order       |");
-    System.out.println("| 3. Show current orders    |");
-    System.out.println("| 4. Archive order          |");
-    System.out.println("| 5. Check lost revenue     |");
-    System.out.println("| 6. Payement / Close order |");
-    System.out.println("| 0. Shutdown               |");
-    System.out.println("-----------------------------");
+    System.out.println("╔═══════════════════════════╗");
+    System.out.println("║ 1. Menu                   ║");
+    System.out.println("║ 2. Create new order       ║");
+    System.out.println("║ 3. Show current orders    ║");
+    System.out.println("║ 4. Archive order          ║");
+    System.out.println("║ 5. Check lost revenue     ║");
+    System.out.println("║ 6. Payment / Close order  ║");
+    System.out.println("║ 0. Shutdown               ║");
+    System.out.println("╚═══════════════════════════╝");
   }
 
   public void createOrder(){
@@ -89,6 +86,7 @@ public class Engine {
       mainMenu();
       switch (sc.nextLine()) {
         case "1" -> {
+          newPage();
           System.out.println(menu.pizzaMenu);
           System.out.println("\n\nPress ENTER to go back");
           sc.nextLine();

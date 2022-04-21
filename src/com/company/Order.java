@@ -26,10 +26,10 @@ public class Order {
   }
 
   public String getFullOrder(){
-    String fullorder = "[";
+    String fullOrder = "[";
     for(int i = 0;i<order.size();i++){
-      fullorder += order.get(i).getNumber() + "." + order.get(i).getName() + " ";
-    }return fullorder + "] " + getOrderPrice() + "DKK";
+      fullOrder += order.get(i).getNumber() + "." + order.get(i).getName() + " ";
+    }return fullOrder + "] " + getOrderPrice() + "DKK";
   }
 
   public int getOrderNumber(){
