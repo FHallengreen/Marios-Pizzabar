@@ -10,17 +10,17 @@ public class Engine {
   CurrentOrders cO = new CurrentOrders();
   int orderNumber = 1;
   Archive archive = new Archive();
-
+  Order order = new Order(orderNumber);
 
   public void createOrder() throws InterruptedException {
     boolean runOrder = true;
-    Order order = new Order(orderNumber);
-    while (runOrder){
+//    Order order = new Order(orderNumber);
+    while (runOrder) {
       System.out.println(ui.newPage());
       System.out.println("\n\n" + order.getFullOrder());
       System.out.println(ui.orderMenu());
       String choice = sc.nextLine();
-      switch(choice) {
+      switch (choice) {
         case "1" -> {
           System.out.println("\n\nEnter Pizza number:");
           String number = sc.nextLine();
@@ -41,7 +41,7 @@ public class Engine {
           runOrder = false;
           cO.addOrder(order);
           System.out.println("Finish Order");
-       }
+        }
       }
     }
   }
@@ -51,20 +51,46 @@ public class Engine {
 //    lostRevenue -= input.getPrice();
   }
 
-  private void archiveMenu() {
+  private void archivedOrders() {
 
   }
 
   private void payment() {
-        System.out.println("Which order would you like to archive/cancel?");
-
+    System.out.println("Which order would you like to archive/cancel? - Type order number.");
+    System.out.println("Type 0 to go back.");
+    System.out.println(cO.showCurrentOrders());
+    boolean noOrder = true;
+    while (noOrder) {
+      int whichOrderNumber = sc.nextInt();
+      for (int i = 0; i < cO.getCurrentOrders().size(); i++) {
+        if (whichOrderNumber == order.getOrderNumber()) {
+          System.out.println(ui.paymentMenu());
+          archiveOrPay(order.getOrderNumber());
+          noOrder = false;
+        } else if (whichOrderNumber == 0) {
+          noOrder = false;
+        } else System.out.println("Not a valid order");
       }
+    }
+  }
 
+  private void archiveOrPay(int orderNumber) {
+    boolean whichOption = true;
+    while (whichOption) {
+      switch (sc.nextLine()) {
+        case "1" -> {
+          System.out.println("Archiving " + orderNumber);
+        }
+        case "2" -> System.out.println("Test2");
+        case "0" -> whichOption = false;
+      }
+    }
+  }
 
 
   public void execute() throws InterruptedException {
 
-    //music.pizzatime(); //TODO Play dat funky music!!
+//    music.pizzatime(); //TODO Play dat funky music!!
     boolean run = true;
     while (run) {
       System.out.println(ui.newPage());
@@ -78,37 +104,38 @@ public class Engine {
         case "2" -> {
           System.out.println("Creating new order");
           createOrder();
-          }
+        }
         case "3" -> {
           System.out.println(cO.showCurrentOrders());
           System.out.println("\n\nPress ENTER to continue");
           sc.nextLine();
         }
         case "4" -> {
-          System.out.println("Archive menu");
-          archiveMenu();
-          System.out.println("\n\nPress ENTER to continue");
-          sc.nextLine();
+          System.out.println("Payment / Close Order");
+          payment();
+
+          System.out.println("\n\nPress ENTER to go back");
+//          sc.nextLine();
         }
         case "5" -> {
-          System.out.println("Check lost revenue");
-          lostRevenue();
-          System.out.println("\n\nPress ENTER to continue");
+          System.out.println("Archived orders / revenue");
+          archivedOrders();
+          System.out.println("\n\nPress ENTER to go back");
           sc.nextLine();
         }
         case "6" -> {
-          System.out.println("Payment / Close Order");
-          payment();
-          System.out.println("\n\nPress ENTER to continue");
+          System.out.println("Check lost revenue");
+          lostRevenue();
+          System.out.println("\n\nPress ENTER to go back");
           sc.nextLine();
         }
         case "0" -> {
           System.out.println("Shutting down!");
           Thread.sleep(5000);
           run = false;
-         }
-    default -> System.out.println("Invalid input");
-     }
+        }
+        default -> System.out.println("Invalid input");
+      }
     }
   }
 }

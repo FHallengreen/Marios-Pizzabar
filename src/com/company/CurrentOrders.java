@@ -9,6 +9,10 @@ public class CurrentOrders {
   public CurrentOrders(){
   }
 
+  public ArrayList<Order> getCurrentOrders() {
+    return currentOrders;
+  }
+
   public void addOrder(Order order){
     currentOrders.add(order);
   }

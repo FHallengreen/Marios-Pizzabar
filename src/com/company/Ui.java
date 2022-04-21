@@ -7,14 +7,14 @@ public class Ui {
 
   public String mainMenu(){
     String mainMenu = "╔═══════════════════════════╗\n"+
-                      "║ 1. Menu                   ║\n"+
-                      "║ 2. Create new order       ║\n"+
-                      "║ 3. Show current orders    ║\n"+
-                      "║ 4. Archive order          ║\n"+
-                      "║ 5. Check lost revenue     ║\n"+
-                      "║ 6. Payment / Close order  ║\n"+
-                      "║ 0. Shutdown               ║\n"+
-                      "╚═══════════════════════════╝";
+    "║ 1. Menu                   ║\n"+
+    "║ 2. Create new order       ║\n"+
+    "║ 3. Show current orders    ║\n"+
+    "║ 4. Payment / Close order  ║\n"+
+    "║ 5. Archived orders        ║\n"+
+    "║ 6. Check lost revenue     ║\n"+
+    "║ 0. Shutdown               ║\n"+
+    "╚═══════════════════════════╝";
     return mainMenu;
   }
 
@@ -30,6 +30,15 @@ public class Ui {
                        "║ 0. Finish Order            ║\n"+
                        "╚════════════════════════════╝";
     return orderMenu;
+  }
+
+  public String paymentMenu(){
+    String paymentMenu = "╔════════════════════════════╗\n"+
+        "║ 1. Archive order           ║\n"+
+        "║ 2. Delete order            ║\n"+
+        "║ 0. Go back                 ║\n"+
+        "╚════════════════════════════╝";
+  return paymentMenu;
   }
 
 }
