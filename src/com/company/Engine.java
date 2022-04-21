@@ -12,7 +12,7 @@ public class Engine {
   Archive archive = new Archive();
 
 
-  public void createOrder(){
+  public void createOrder() throws InterruptedException {
     boolean runOrder = true;
     Order order = new Order(orderNumber);
     while (runOrder){
@@ -32,7 +32,8 @@ public class Engine {
           order.removePizzaFromOrder(menu.getPizza(number));
         }
         case "3" -> {
-          System.out.println("Cancel order");
+          System.out.println("Canceling order");
+          Thread.sleep(2000);
           runOrder = false;
         }
         case "0" -> {
@@ -71,7 +72,7 @@ public class Engine {
       switch (sc.nextLine()) {
         case "1" -> {
           System.out.println(menu.getPizzamenu());
-          System.out.println("\n\nPress ENTER to go back");
+          System.out.println("\n\nPress ENTER to continue");
           sc.nextLine();
         }
         case "2" -> {
@@ -80,25 +81,25 @@ public class Engine {
           }
         case "3" -> {
           System.out.println(cO.showCurrentOrders());
-          System.out.println("\n\nPress ENTER to go back");
+          System.out.println("\n\nPress ENTER to continue");
           sc.nextLine();
         }
         case "4" -> {
           System.out.println("Archive menu");
           archiveMenu();
-          System.out.println("\n\nPress ENTER to go back");
+          System.out.println("\n\nPress ENTER to continue");
           sc.nextLine();
         }
         case "5" -> {
           System.out.println("Check lost revenue");
           lostRevenue();
-          System.out.println("\n\nPress ENTER to go back");
+          System.out.println("\n\nPress ENTER to continue");
           sc.nextLine();
         }
         case "6" -> {
           System.out.println("Payment / Close Order");
           payment();
-          System.out.println("\n\nPress ENTER to go back");
+          System.out.println("\n\nPress ENTER to continue");
           sc.nextLine();
         }
         case "0" -> {

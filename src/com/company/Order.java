@@ -11,10 +11,13 @@ public class Order {
     this.orderNumber = orderNumber;
   }
 
-  public void addPizzaToOrder(Pizza pizza){
+  public void addPizzaToOrder(Pizza pizza) throws InterruptedException {
     if(pizza != null){
       order.add(pizza);
-    }else System.out.println("No pizza to be found under that Number!");
+    }else {
+      System.out.println("No pizza to be found under that Number!");
+      Thread.sleep(2000);
+    }
   }
 
   public void removePizzaFromOrder(Pizza pizza){
@@ -29,7 +32,9 @@ public class Order {
     String fullOrder = "[";
     for(int i = 0;i<order.size();i++){
       fullOrder += order.get(i).getNumber() + "." + order.get(i).getName() + " ";
-    }return fullOrder + "] " + getOrderPrice() + "DKK";
+    }if(order.size() == 0){
+      return "";
+    } else return fullOrder + "] ■ Price: " + getOrderPrice() + "DKK";
   }
 
   public int getOrderNumber(){

@@ -13,14 +13,12 @@ public class CurrentOrders {
     currentOrders.add(order);
   }
 
-  public ArrayList<Order> getCurrentOrders() {
-    return currentOrders;
-  }
-
   public String showCurrentOrders(){
     String orders = "";
     for(int x = 0; x<currentOrders.size();x++) {
-      orders += currentOrders.get(x).getOrderNumber() + "" + currentOrders.get(x).getFullOrder() + "\n";
+      orders += "Order: " + currentOrders.get(x).getOrderNumber() + " │ " + currentOrders.get(x).getFullOrder() + "\n";
+    }if(orders.equals("")){
+      orders = "There are no ongoing Orders";
     }return orders;
   }
 }
