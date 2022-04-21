@@ -86,7 +86,7 @@ public class Engine {
     while (whichOption) {
       switch (sc.nextLine()) {
         case "1" -> {
-          System.out.println("Archiving order nr. " + orderNumber.getFullOrder());
+          System.out.println("Archiving order nr. " + orderNumber.getOrderNumber() + orderNumber.getFullOrder());
           for (int i = 0; i < cO.getCurrentOrders().size(); i++) {
             archive.getArchivedPizzas().add(orderNumber);
             cO.currentOrders.remove(orderNumber);
