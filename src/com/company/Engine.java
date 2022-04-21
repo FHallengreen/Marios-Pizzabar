@@ -88,18 +88,11 @@ public class Engine {
     while (whichOption) {
       switch (sc.nextLine()) {
         case "1" -> {
-
           for (int i = 0; i < cO.getCurrentOrders().size(); i++) {
-
-            if (archive.getArchivedPizzas().size() == 0) {
-              archive.getArchivedPizzas().add(orderNumber);
-              cO.currentOrders.remove(orderNumber);
-              System.out.println("Archiving order nr. " + orderNumber.getOrderNumber() + orderNumber.getFullOrder());
-              whichOption = false;
-            } else if (archive.getArchivedPizzas().get(orderNumber.getOrderNumber()) == orderNumber) {
-              System.out.println("Order already in the system.");
-              whichOption = false;
-            }
+            archive.getArchivedPizzas().add(orderNumber);
+            cO.currentOrders.remove(orderNumber);
+            System.out.println("Archiving order nr. " + orderNumber.getOrderNumber() + orderNumber.getFullOrder());
+            whichOption = false;
           }
         }
         case "2" -> {
