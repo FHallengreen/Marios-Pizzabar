@@ -118,10 +118,12 @@ public class Engine {
           sc.nextLine();
         }
         case "2" -> {
+          System.out.println(ui.newPage());
           System.out.println("Creating new order");
           createOrder();
         }
         case "3" -> {
+          System.out.println(ui.newPage());
           System.out.println(cO.showCurrentOrders());
           System.out.println("\n\nPress ENTER to continue");
           sc.nextLine();
@@ -134,18 +136,21 @@ public class Engine {
 //          sc.nextLine();
         }
         case "5" -> {
+          System.out.println(ui.newPage());
           System.out.println("Archived orders / revenue");
           archivedOrders();
           System.out.println("\n\nPress ENTER to go back");
           sc.nextLine();
         }
         case "6" -> {
+          System.out.println(ui.newPage());
           System.out.println("Check lost revenue");
           System.out.println("Total Lost Revenue: -" + lostRevenue + "DKK");
           System.out.println("\n\nPress ENTER to go back");
           sc.nextLine();
         }
         case "0" -> {
+          System.out.println(ui.newPage());
           System.out.println("Shutting down!");
           Thread.sleep(5000);
           run = false;
