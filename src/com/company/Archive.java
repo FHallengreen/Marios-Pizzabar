@@ -9,4 +9,5 @@ public class Archive {
     public ArrayList<Order> getArchivedPizzas() {
         return archivedPizzas;
     }
+
 }

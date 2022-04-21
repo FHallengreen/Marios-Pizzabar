@@ -68,14 +68,15 @@ public class Engine {
         boolean check = false;
         if (whichOrderNumber == 0) {
           noOrder = false;
-        }else for (int i = 0; i < cO.getCurrentOrders().size(); i++) {
-            if (whichOrderNumber == cO.getCurrentOrders().get(i).getOrderNumber()) {
-              check = true;
-              System.out.println(ui.paymentMenu());
-              archiveOrPay(cO.currentOrders.get(i));
-              noOrder = false;
-            }
-        }if(check == false) System.out.println("Not a valid order");
+        } else for (int i = 0; i < cO.getCurrentOrders().size(); i++) {
+          if (whichOrderNumber == cO.getCurrentOrders().get(i).getOrderNumber()) {
+            check = true;
+            System.out.println(ui.paymentMenu());
+            archiveOrPay(cO.currentOrders.get(i));
+            noOrder = false;
+          }
+        }
+        if (check == false) System.out.println("Not a valid order");
       }
     } catch (InputMismatchException e) {
       System.out.print(e.getMessage() + "Invalid choice");
@@ -87,16 +88,26 @@ public class Engine {
     while (whichOption) {
       switch (sc.nextLine()) {
         case "1" -> {
-          System.out.println("Archiving order nr. " + orderNumber.getOrderNumber() + orderNumber.getFullOrder());
+
           for (int i = 0; i < cO.getCurrentOrders().size(); i++) {
-            archive.getArchivedPizzas().add(orderNumber);
-            cO.currentOrders.remove(orderNumber);
+
+            if (archive.getArchivedPizzas().size() == 0) {
+              archive.getArchivedPizzas().add(orderNumber);
+              cO.currentOrders.remove(orderNumber);
+              System.out.println("Archiving order nr. " + orderNumber.getOrderNumber() + orderNumber.getFullOrder());
+              whichOption = false;
+            } else if (archive.getArchivedPizzas().get(orderNumber.getOrderNumber()) == orderNumber) {
+              System.out.println("Order already in the system.");
+              whichOption = false;
+            }
           }
         }
-        case "2" -> { lostRevenue(orderNumber);
+        case "2" -> {
+          lostRevenue(orderNumber);
           cO.getCurrentOrders().remove(orderNumber);
           System.out.println("Order: " + orderNumber.orderNumber + " has been canceled.");
           System.out.println(orderNumber.getOrderPrice() + "DKK has been added to your Lost Revenue");
+          whichOption = false;
         }
         case "0" -> whichOption = false;
       }
@@ -133,7 +144,7 @@ public class Engine {
           payment();
 
           System.out.println("\n\nPress ENTER to go back");
-//          sc.nextLine();
+          sc.nextLine();
         }
         case "5" -> {
           System.out.println(ui.newPage());
