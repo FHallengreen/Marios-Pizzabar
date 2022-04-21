@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -53,7 +54,7 @@ public class Engine {
   }
 
   private void archivedOrders() {
-    System.out.println(archive.archivedPizzas);
+    System.out.println(archive.getArchivedPizzas());
 
   }
 
@@ -76,7 +77,7 @@ public class Engine {
         }
       }
     } catch (InputMismatchException e) {
-      System.out.print(e.getMessage());
+      System.out.print(e.getMessage() + "Invalid choice");
     }
   }
 
@@ -85,9 +86,9 @@ public class Engine {
     while (whichOption) {
       switch (sc.nextLine()) {
         case "1" -> {
-          System.out.println("Archiving order nr. " + orderNumber);
+          System.out.println("Archiving order nr. " + orderNumber.getFullOrder());
           for (int i = 0; i < cO.getCurrentOrders().size(); i++) {
-            archive.archivedPizzas.add(orderNumber);
+            archive.getArchivedPizzas().add(orderNumber);
             cO.currentOrders.remove(orderNumber);
           }
         }
