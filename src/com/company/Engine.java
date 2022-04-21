@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Engine {
@@ -10,11 +11,11 @@ public class Engine {
   CurrentOrders cO = new CurrentOrders();
   int orderNumber = 1;
   Archive archive = new Archive();
-  Order order = new Order(orderNumber);
+//  Order order = new Order(orderNumber);
 
   public void createOrder() throws InterruptedException {
     boolean runOrder = true;
-//    Order order = new Order(orderNumber);
+    Order order = new Order(orderNumber);
     while (runOrder) {
       System.out.println(ui.newPage());
       System.out.println("\n\n" + order.getFullOrder());
@@ -52,6 +53,7 @@ public class Engine {
   }
 
   private void archivedOrders() {
+    System.out.println(archive.archivedPizzas);
 
   }
 
@@ -60,26 +62,34 @@ public class Engine {
     System.out.println("Type 0 to go back.");
     System.out.println(cO.showCurrentOrders());
     boolean noOrder = true;
-    while (noOrder) {
-      int whichOrderNumber = sc.nextInt();
-      for (int i = 0; i < cO.getCurrentOrders().size(); i++) {
-        if (whichOrderNumber == order.getOrderNumber()) {
-          System.out.println(ui.paymentMenu());
-          archiveOrPay(order.getOrderNumber());
-          noOrder = false;
-        } else if (whichOrderNumber == 0) {
-          noOrder = false;
-        } else System.out.println("Not a valid order");
+    try {
+      while (noOrder) {
+        int whichOrderNumber = sc.nextInt();
+        for (int i = 0; i < cO.getCurrentOrders().size(); i++) {
+          if (whichOrderNumber == cO.getCurrentOrders().get(i).getOrderNumber()) {
+            System.out.println(ui.paymentMenu());
+            archiveOrPay(cO.currentOrders.get(i));
+            noOrder = false;
+          } else if (whichOrderNumber == 0) {
+            noOrder = false;
+          } else System.out.println("Not a valid order");
+        }
       }
+    } catch (InputMismatchException e) {
+      System.out.print(e.getMessage());
     }
   }
 
-  private void archiveOrPay(int orderNumber) {
+  private void archiveOrPay(Order orderNumber) {
     boolean whichOption = true;
     while (whichOption) {
       switch (sc.nextLine()) {
         case "1" -> {
-          System.out.println("Archiving " + orderNumber);
+          System.out.println("Archiving order nr. " + orderNumber);
+          for (int i = 0; i < cO.getCurrentOrders().size(); i++) {
+            archive.archivedPizzas.add(orderNumber);
+            cO.currentOrders.remove(orderNumber);
+          }
         }
         case "2" -> System.out.println("Test2");
         case "0" -> whichOption = false;
