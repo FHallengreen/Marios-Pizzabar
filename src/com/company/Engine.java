@@ -11,7 +11,7 @@ public class Engine {
   CurrentOrders cO = new CurrentOrders();
   int orderNumber = 1;
   Archive archive = new Archive();
-//  Order order = new Order(orderNumber);
+  private int lostRevenue = 0;
 
   public void createOrder() throws InterruptedException {
     boolean runOrder = true;
@@ -47,9 +47,8 @@ public class Engine {
     }
   }
 
-  private void lostRevenue() {
-    int lostRevenue = 0;
-//    lostRevenue -= input.getPrice();
+  private void lostRevenue(Order lostOrder) {
+    lostRevenue += lostOrder.getOrderPrice();
   }
 
   private void archivedOrders() {
@@ -65,15 +64,17 @@ public class Engine {
     try {
       while (noOrder) {
         int whichOrderNumber = sc.nextInt();
-        for (int i = 0; i < cO.getCurrentOrders().size(); i++) {
-          if (whichOrderNumber == cO.getCurrentOrders().get(i).getOrderNumber()) {
-            System.out.println(ui.paymentMenu());
-            archiveOrPay(cO.currentOrders.get(i));
-            noOrder = false;
-          } else if (whichOrderNumber == 0) {
-            noOrder = false;
-          } else System.out.println("Not a valid order");
-        }
+        boolean check = false;
+        if (whichOrderNumber == 0) {
+          noOrder = false;
+        }else for (int i = 0; i < cO.getCurrentOrders().size(); i++) {
+            if (whichOrderNumber == cO.getCurrentOrders().get(i).getOrderNumber()) {
+              check = true;
+              System.out.println(ui.paymentMenu());
+              archiveOrPay(cO.currentOrders.get(i));
+              noOrder = false;
+            }
+        }if(check == false) System.out.println("Not a valid order");
       }
     } catch (InputMismatchException e) {
       System.out.print(e.getMessage());
@@ -91,7 +92,11 @@ public class Engine {
             cO.currentOrders.remove(orderNumber);
           }
         }
-        case "2" -> System.out.println("Test2");
+        case "2" -> { lostRevenue(orderNumber);
+          cO.getCurrentOrders().remove(orderNumber);
+          System.out.println("Order: " + orderNumber.orderNumber + " has been canceled.");
+          System.out.println(orderNumber.getOrderPrice() + "DKK has been added to your Lost Revenue");
+        }
         case "0" -> whichOption = false;
       }
     }
@@ -135,7 +140,7 @@ public class Engine {
         }
         case "6" -> {
           System.out.println("Check lost revenue");
-          lostRevenue();
+          System.out.println("Total Lost Revenue: -" + lostRevenue + "DKK");
           System.out.println("\n\nPress ENTER to go back");
           sc.nextLine();
         }
