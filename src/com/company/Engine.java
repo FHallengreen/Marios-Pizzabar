@@ -119,7 +119,7 @@ public class Engine {
 
   public void execute() throws InterruptedException {
 
-//    music.pizzatime(); //TODO Play dat funky music!!
+    music.pizzatime(); //TODO Play dat funky music!!
     boolean run = true;
     while (run) {
       System.out.println(ui.newPage());
@@ -128,7 +128,8 @@ public class Engine {
       switch (sc.nextLine()) {
         case "1" -> {
           System.out.println(ui.newPage());
-          String menuList = Arrays.toString(menu.getPizzamenu().toArray()).replace("]","").replace(",  ", "");
+          String menuList = Arrays.toString(menu.getPizzamenu().toArray()).replace("]","")
+                  .replace(",  ", "");
           System.out.println(menuList.substring(2));
           System.out.println("\n\nPress ENTER to continue");
           sc.nextLine();
