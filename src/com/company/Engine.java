@@ -127,6 +127,7 @@ public class Engine {
       System.out.println(ui.mainMenu());
       switch (sc.nextLine()) {
         case "1" -> {
+          System.out.println(ui.newPage());
           String menuList = Arrays.toString(menu.getPizzamenu().toArray()).replace("]","").replace(",  ", "");
           System.out.println(menuList.substring(2));
           System.out.println("\n\nPress ENTER to continue");
