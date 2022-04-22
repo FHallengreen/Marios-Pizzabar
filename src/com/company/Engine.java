@@ -123,6 +123,7 @@ public class Engine {
     boolean run = true;
     while (run) {
       System.out.println(ui.newPage());
+      System.out.println(cO.showCurrentOrders());
       System.out.println(ui.mainMenu());
       switch (sc.nextLine()) {
         case "1" -> {
@@ -136,26 +137,20 @@ public class Engine {
           createOrder();
         }
         case "3" -> {
-          System.out.println(ui.newPage());
-          System.out.println(cO.showCurrentOrders());
-          System.out.println("\n\nPress ENTER to continue");
-          sc.nextLine();
-        }
-        case "4" -> {
           System.out.println("Payment / Close Order");
           payment();
 
           System.out.println("\n\nPress ENTER to go back");
           sc.nextLine();
         }
-        case "5" -> {
+        case "4" -> {
           System.out.println(ui.newPage());
           System.out.println("Archived orders / revenue");
           archivedOrders();
           System.out.println("\n\nPress ENTER to go back");
           sc.nextLine();
         }
-        case "6" -> {
+        case "5" -> {
           System.out.println(ui.newPage());
           if (lostRevenue != 0){
           System.out.println("Total Lost Revenue: -" + lostRevenue + " DKK");

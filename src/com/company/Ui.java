@@ -9,10 +9,9 @@ public class Ui {
     String mainMenu = "╔═══════════════════════════╗\n"+
     "║ 1. Menu                   ║\n"+
     "║ 2. Create new order       ║\n"+
-    "║ 3. Show current orders    ║\n"+
-    "║ 4. Payment / Close order  ║\n"+
-    "║ 5. Archived orders        ║\n"+
-    "║ 6. Check lost revenue     ║\n"+
+    "║ 3. Payment / Close order  ║\n"+
+    "║ 4. Archived orders        ║\n"+
+    "║ 5. Check lost revenue     ║\n"+
     "║ 0. Shutdown               ║\n"+
     "╚═══════════════════════════╝";
     return mainMenu;
