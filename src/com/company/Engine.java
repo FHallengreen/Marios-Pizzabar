@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -53,8 +54,16 @@ public class Engine {
   }
 
   private void archivedOrders() {
-    System.out.println(archive.getArchivedPizzas());
-
+    int revenue = 0;
+    if (archive.getArchivedPizzas().size() != 0){
+      for (int i = 0; i < archive.getArchivedPizzas().size(); i++) {
+        System.out.println("Order number " + archive.getArchivedPizzas().get(i).getOrderNumber() + " " + archive.getArchivedPizzas().get(i).getFullOrder());
+        revenue += archive.getArchivedPizzas().get(i).getOrderPrice();
+      }
+        System.out.println("\n\u001B[1m" +"Total revenue: " + revenue + " DKK\033[0m");
+      System.out.println("‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗");
+    }
+    else System.out.println("No orders archived");
   }
 
   private void payment() {
@@ -117,7 +126,7 @@ public class Engine {
       System.out.println(ui.mainMenu());
       switch (sc.nextLine()) {
         case "1" -> {
-          System.out.println(menu.getPizzamenu());
+          System.out.println(Arrays.toString(menu.getPizzamenu().toArray()).replace("]","").replace(",  ", "").substring(2,1212));
           System.out.println("\n\nPress ENTER to continue");
           sc.nextLine();
         }
@@ -148,8 +157,10 @@ public class Engine {
         }
         case "6" -> {
           System.out.println(ui.newPage());
-          System.out.println("Check lost revenue");
-          System.out.println("Total Lost Revenue: -" + lostRevenue + "DKK");
+          if (lostRevenue != 0){
+          System.out.println("Total Lost Revenue: -" + lostRevenue + " DKK");
+          System.out.println("‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗");
+          }else System.out.println("Currently no lost revenue.");
           System.out.println("\n\nPress ENTER to go back");
           sc.nextLine();
         }

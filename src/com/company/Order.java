@@ -34,7 +34,7 @@ public class Order {
       fullOrder += order.get(i).getNumber() + "." + order.get(i).getName() + " ";
     }if(order.size() == 0){
       return "";
-    } else return fullOrder + "] ■ Price: " + getOrderPrice() + "DKK";
+    } else return fullOrder + "] ■ Price: " + getOrderPrice() + " kr.";
   }
 
   public int getOrderNumber(){
