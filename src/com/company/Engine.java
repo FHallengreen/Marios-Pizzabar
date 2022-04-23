@@ -57,6 +57,7 @@ public class Engine {
                   cO.addOrder(order);
                   System.out.println("Order: " + orderNumber + " has been added to Current Orders");
                   Thread.sleep(2000);
+                  orderNumber++;
                 }
               }
               case "2" -> {
@@ -65,13 +66,14 @@ public class Engine {
                 cO.addOrder(order);
                 System.out.println("Order: " + orderNumber + " has been added to Current Orders");
                 Thread.sleep(2000);
+                orderNumber++;
               }
               default -> System.out.println("Invalid Input!");
             }
           }
         }
       }
-    } orderNumber++;
+    }
   }
 
   private void lostRevenue(Order lostOrder) {
