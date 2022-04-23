@@ -46,7 +46,7 @@ public class Engine {
             String choice2 = sc.nextLine();
             switch (choice2) {
               case "1" -> {
-                System.out.println("Please add Pickup time:");
+                System.out.println("Please add Pickup time: (ex. 1245 for 12:45)");
                 int time = sc.nextInt();
                 if (time < 0 || time > 2359) {
                   System.out.println("Invalid time. Please try again");
