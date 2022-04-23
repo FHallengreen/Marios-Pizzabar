@@ -1,6 +1,5 @@
 package com.company;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -40,13 +39,39 @@ public class Engine {
           runOrder = false;
         }
         case "0" -> {
-          orderNumber++;
-          runOrder = false;
-          cO.addOrder(order);
-          System.out.println("Finish Order");
+          System.out.println(ui.newPage());
+          boolean run = true;
+          while (run) {
+            System.out.println("Do you wish to add a pickup time?\nYES(1)/NO(2)");
+            String choice2 = sc.nextLine();
+            switch (choice2) {
+              case "1" -> {
+                System.out.println("Please add Pickup time:");
+                int time = sc.nextInt();
+                if (time < 0 || time > 2359) {
+                  System.out.println("Invalid time. Please try again");
+                } else {
+                  runOrder = false;
+                  run = false;
+                  order.setTime(time);
+                  cO.addOrder(order);
+                  System.out.println("Order: " + orderNumber + " has been added to Current Orders");
+                  Thread.sleep(2000);
+                }
+              }
+              case "2" -> {
+                runOrder = false;
+                run = false;
+                cO.addOrder(order);
+                System.out.println("Order: " + orderNumber + " has been added to Current Orders");
+                Thread.sleep(2000);
+              }
+              default -> System.out.println("Invalid Input!");
+            }
+          }
         }
       }
-    }
+    } orderNumber++;
   }
 
   private void lostRevenue(Order lostOrder) {
@@ -57,7 +82,7 @@ public class Engine {
     int revenue = 0;
     if (archive.getArchivedPizzas().size() != 0){
       for (int i = 0; i < archive.getArchivedPizzas().size(); i++) {
-        System.out.println("Order number " + archive.getArchivedPizzas().get(i).getOrderNumber() + " " + archive.getArchivedPizzas().get(i).getFullOrder());
+        System.out.println("Order: " + archive.getArchivedPizzas().get(i).getOrderNumber() + " " + archive.getArchivedPizzas().get(i).getFullOrder());
         revenue += archive.getArchivedPizzas().get(i).getOrderPrice();
       }
         System.out.println("\n\u001B[1m" +"Total revenue: " + revenue + " DKK\033[0m");
@@ -69,7 +94,7 @@ public class Engine {
   private void payment() {
     System.out.println("Which order would you like to archive/cancel? - Type order number.");
     System.out.println("Type 0 to go back.");
-    System.out.println(cO.showCurrentOrders());
+    System.out.println(cO.showCUrrentOrders());
     boolean noOrder = true;
     try {
       while (noOrder) {
@@ -83,6 +108,7 @@ public class Engine {
             System.out.println(ui.paymentMenu());
             archiveOrPay(cO.currentOrders.get(i));
             noOrder = false;
+            break;
           }
         }
         if (check == false) System.out.println("Not a valid order");
@@ -100,7 +126,7 @@ public class Engine {
           for (int i = 0; i < cO.getCurrentOrders().size(); i++) {
             archive.getArchivedPizzas().add(orderNumber);
             cO.currentOrders.remove(orderNumber);
-            System.out.println("Archiving order nr. " + orderNumber.getOrderNumber() + orderNumber.getFullOrder());
+            System.out.println("Archiving Order: " + orderNumber.getOrderNumber() + " | " + orderNumber.getFullOrder());
             whichOption = false;
           }
         }
@@ -119,11 +145,11 @@ public class Engine {
 
   public void execute() throws InterruptedException {
 
-    music.pizzatime(); //TODO Play dat funky music!!
+    //music.pizzatime(); //TODO Play dat funky music!!
     boolean run = true;
     while (run) {
       System.out.println(ui.newPage());
-      System.out.println(cO.showCurrentOrders());
+      System.out.println(cO.showCUrrentOrders());
       System.out.println(ui.mainMenu());
       switch (sc.nextLine()) {
         case "1" -> {

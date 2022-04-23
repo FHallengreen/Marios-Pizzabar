@@ -6,9 +6,11 @@ public class Order {
 
   ArrayList<Pizza> order = new ArrayList<>();
   int orderNumber;
+  int time;
 
   public Order(int orderNumber){
     this.orderNumber = orderNumber;
+    this.time = 0;
   }
 
   public void addPizzaToOrder(Pizza pizza) throws InterruptedException {
@@ -39,6 +41,14 @@ public class Order {
 
   public int getOrderNumber(){
     return orderNumber;
+  }
+
+  public void setTime(int time){
+    this.time = time;
+  }
+
+  public int getTime(){
+    return time;
   }
 
   public int getOrderPrice(){
