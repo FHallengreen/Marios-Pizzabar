@@ -47,10 +47,12 @@ public class Engine {
             switch (choice2) {
               case "1" -> {
                 System.out.println("Please add Pickup time: (ex. 1245 for 12:45)");
+                try {
                 int time = sc.nextInt();
                 if (time < 0 || time > 2359) {
                   System.out.println("Invalid time. Please try again");
-                } else {
+                }
+                else {
                   runOrder = false;
                   run = false;
                   order.setTime(time);
@@ -59,7 +61,9 @@ public class Engine {
                   Thread.sleep(2000);
                   orderNumber++;
                 }
-              }
+              }catch (InputMismatchException e) {
+                System.out.println("Please try again without semicolon");
+              }}
               case "2" -> {
                 runOrder = false;
                 run = false;
@@ -88,7 +92,7 @@ public class Engine {
         revenue += archive.getArchivedPizzas().get(i).getOrderPrice();
       }
         System.out.println("\n\u001B[1m" +"Total revenue: " + revenue + " DKK\033[0m");
-      System.out.println("‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗");
+      System.out.println("‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗");
     }
     else System.out.println("No orders archived");
   }
