@@ -37,8 +37,6 @@ public class CurrentOrders {
       } else
       orders += "Order: " + currentOrders.get(x).getOrderNumber() + " │ " + currentOrders.get(x).getFullOrder() + "\n";
 
-    }if(orders.equals("")){
-      orders = "\n";
-    }return orders + "_________________________\n\n" + preorders;
+    }return orders + "\n_________________________\n\n" + preorders;
   }
 }
