@@ -38,6 +38,13 @@ public class Engine {
           Thread.sleep(2000);
           runOrder = false;
         }
+        case "4" -> {
+          String menuList = Arrays.toString(menu.getPizzamenu().toArray()).replace("]","")
+              .replace(",  ", "");
+          System.out.println(menuList.substring(2));
+          System.out.println("\n\nPress ENTER to continue");
+          sc.nextLine();
+        }
         case "0" -> {
           System.out.println(ui.newPage());
           boolean run = true;
@@ -94,7 +101,9 @@ public class Engine {
         System.out.println("\n\u001B[1m" +"Total revenue: " + revenue + " DKK\033[0m");
       System.out.println("‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗");
     }
-    else System.out.println("No orders archived");
+    else {
+      System.out.println("No orders archived");
+    }
   }
 
   private void payment() {

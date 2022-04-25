@@ -24,6 +24,7 @@ public class Ui {
                        "║ 1. Add Pizza to order      ║\n"+
                        "║ 2. Delete Pizza from order ║\n"+
                        "║ 3. Delete Entire Order     ║\n"+
+                       "║ 4. Show Menu               ║\n"+
                        "║ 0. Finish Order            ║\n"+
                        "╚════════════════════════════╝";
     return orderMenu;
