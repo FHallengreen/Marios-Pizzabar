@@ -10,7 +10,7 @@ public class Engine {
   Ui ui = new Ui();
   Menu menu = new Menu();
   CurrentOrders cO = new CurrentOrders();
-  int orderNumber = 1;
+  private int orderNumber = 1;
   Archive archive = new Archive();
   private int lostRevenue = 0;
 
@@ -100,7 +100,7 @@ public class Engine {
   private void payment() {
     System.out.println("Which order would you like to archive/cancel? - Type order number.");
     System.out.println("Type 0 to go back.");
-    System.out.println(cO.showCUrrentOrders());
+    System.out.println(cO.showCurrentOrders());
     boolean noOrder = true;
     try {
       while (noOrder) {
@@ -139,7 +139,7 @@ public class Engine {
         case "2" -> {
           lostRevenue(orderNumber);
           cO.getCurrentOrders().remove(orderNumber);
-          System.out.println("Order: " + orderNumber.orderNumber + " has been canceled.");
+          System.out.println("Order: " + orderNumber.getOrderNumber() + " has been canceled.");
           System.out.println(orderNumber.getOrderPrice() + "DKK has been added to your Lost Revenue");
           whichOption = false;
         }
@@ -155,7 +155,7 @@ public class Engine {
     boolean run = true;
     while (run) {
       System.out.println(ui.newPage());
-      System.out.println(cO.showCUrrentOrders());
+      System.out.println(cO.showCurrentOrders());
       System.out.println(ui.mainMenu());
       switch (sc.nextLine()) {
         case "1" -> {

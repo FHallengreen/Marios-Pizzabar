@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Order {
 
-  ArrayList<Pizza> order = new ArrayList<>();
-  int orderNumber;
-  int time;
+  private ArrayList<Pizza> order = new ArrayList<>();
+  private int orderNumber;
+  private int time;
 
   public Order(int orderNumber){
     this.orderNumber = orderNumber;

@@ -3,7 +3,7 @@ package com.company;
 import java.util.ArrayList;
 
 public class Menu {
-  ArrayList<Pizza> pizzaMenu = new ArrayList();
+  private ArrayList<Pizza> pizzaMenu = new ArrayList();
 
   public Menu() {
     pizzaMenu.add(new Pizza("1","Vesuvio", "Tomatsauce, ost, skinke & oregano", 57));
@@ -21,15 +21,6 @@ public class Menu {
     pizzaMenu.add(new Pizza("13","Venezia","Tomatsauce, ost, bacon & oregano", 61));
     pizzaMenu.add(new Pizza("14","Mafia","Tomatsauce, ost, pepperoni, bacon, løg & oregano", 61));
   }
-  @Override
-  public String toString() {
-    return "Menu:" +
-        pizzaMenu;
-  }
-
-  public void addPizza(Pizza pizza) {
-    this.pizzaMenu.add(pizza);
-  }
 
   public ArrayList getPizzamenu() {
     return pizzaMenu;
@@ -42,5 +33,11 @@ public class Menu {
         pizza = pizzaMenu.get(x);
       }
     } return pizza;
+  }
+
+  @Override
+  public String toString() {
+    return "Menu:" +
+        pizzaMenu;
   }
 }

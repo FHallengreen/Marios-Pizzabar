@@ -18,7 +18,7 @@ public class CurrentOrders {
     currentOrders.add(order);
   }
 
-  public String showCUrrentOrders(){
+  public String showCurrentOrders(){
     String orders = "";
     String preorders = "";
     Collections.sort(currentOrders, Comparator.comparingInt(Order::getTime)); //sorting current orders by Time
