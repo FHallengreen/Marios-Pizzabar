@@ -160,7 +160,7 @@ public class Engine {
 
   public void execute() throws InterruptedException {
 
-    //music.pizzatime(); //TODO Play dat funky music!!
+    music.pizzatime();
     boolean run = true;
     while (run) {
       System.out.println(ui.newPage());
